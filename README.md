@@ -10,8 +10,7 @@ extra Python packages are required.
 Install with Homebrew:
 
 ```sh
-brew tap ard-tube/qdex
-brew install qdex
+brew install ard-tube/qdex/qdex
 ```
 
 Or download and run the setup installer:
@@ -65,8 +64,8 @@ never overwritten. Hidden files are omitted by default; type a dot to search
 for them. Qdex opens selected files and apps using macOS's `open` command.
 
 Qdex is free to use and does not require Apple Developer Program membership or
-App Store distribution. The Homebrew tap and website are published with this
-project; see the links on the website for source and install instructions.
+App Store distribution. The Homebrew tap and website are published with this project; see the links on
+the website for source and install instructions.
 
 ## Tests
 
