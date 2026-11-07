@@ -19,9 +19,9 @@ Or download and run the setup installer:
 curl -fsSL https://ard-tube.github.io/qdex/install.sh | sh
 ```
 
-The installer asks where to save Qdex, adds its launcher to `~/.local/bin`,
-and updates the profile for zsh, bash, or fish. Open a new terminal window and
-run `qdex`.
+The installer asks where to save Qdex (default `~/Documents/Qdex`), adds its
+launcher to `~/.local/bin`, and updates the profile for zsh, bash, or fish.
+Open a new terminal window and run `qdex`.
 
 ## Run
 
