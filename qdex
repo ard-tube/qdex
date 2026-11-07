@@ -1,0 +1,13 @@
+#!/bin/sh
+set -eu
+script_path=$0
+while [ -L "$script_path" ]; do
+    script_dir=$(CDPATH= cd -P -- "$(dirname -- "$script_path")" && pwd)
+    target=$(readlink "$script_path")
+    case "$target" in
+        /*) script_path=$target ;;
+        *) script_path=$script_dir/$target ;;
+    esac
+done
+script_dir=$(CDPATH= cd -P -- "$(dirname -- "$script_path")" && pwd)
+exec python3 "$script_dir/qdex.py" "$@"

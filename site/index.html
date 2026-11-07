@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070b12">
+  <meta name="description" content="Qdex is a free, keyboard-first neon terminal launcher for macOS.">
+  <title>QDEX — Your Mac, at full speed</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #070b12;
+      --panel: #0c1420;
+      --line: #183144;
+      --cyan: #66f6ff;
+      --pink: #f27bff;
+      --green: #81ffbd;
+      --muted: #91a6b8;
+      font: 16px/1.6 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: #e5f1fb;
+      background:
+        radial-gradient(ellipse at 50% -20%, #123041 0, transparent 55%),
+        linear-gradient(180deg, #090e17, var(--bg) 70%);
+    }
+    main { width: min(1050px, calc(100% - 36px)); margin: 0 auto; padding: 48px 0 64px; }
+    .top { display: flex; justify-content: space-between; color: var(--green); font-size: .8rem; letter-spacing: .14em; }
+    .hero { text-align: center; padding: 80px 0 64px; }
+    .logo {
+      margin: 0;
+      color: var(--cyan);
+      font-size: clamp(3rem, 11vw, 7rem);
+      line-height: 1;
+      letter-spacing: .2em;
+      text-shadow: 0 0 12px #66f6ff88, 0 0 42px #21d8ff55;
+    }
+    .hero h2 { margin: 20px 0 8px; color: var(--pink); font-size: clamp(1.1rem, 3vw, 1.65rem); }
+    .hero p { color: var(--muted); max-width: 650px; margin: 0 auto 30px; }
+    .install {
+      display: inline-block;
+      padding: 13px 18px;
+      color: var(--green);
+      border: 1px solid #81ffbd80;
+      border-radius: 6px;
+      background: #81ffbd0d;
+      text-decoration: none;
+      box-shadow: 0 0 28px #81ffbd14;
+    }
+    .install:hover { background: #81ffbd1c; }
+    .terminal {
+      overflow: auto;
+      margin: 18px auto 0;
+      max-width: 640px;
+      padding: 18px 22px;
+      text-align: left;
+      background: #05080dcc;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--cyan);
+    }
+    .terminal span { color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    article { padding: 20px; border: 1px solid var(--line); background: #0c1420c9; border-radius: 8px; }
+    article h3 { margin: 0 0 8px; color: var(--cyan); font-size: 1rem; }
+    article p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .profile { margin-top: 40px; padding: 20px 24px; border-left: 2px solid var(--pink); background: #f27bff0a; }
+    .profile strong { color: var(--pink); }
+    footer { display: flex; justify-content: space-between; gap: 18px; margin-top: 52px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: .8rem; }
+    footer a { color: var(--cyan); }
+    @media (max-width: 700px) {
+      main { padding-top: 24px; }
+      .hero { padding: 60px 0 44px; }
+      .grid { grid-template-columns: 1fr; }
+      .top { font-size: .65rem; }
+      footer { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="top"><span>QDEX // MACOS SYSTEM NAVIGATOR</span><span>FREE · OPEN SOURCE</span></div>
+    <section class="hero">
+      <h1 class="logo">QDEX</h1>
+      <h2>YOUR MAC, AT FULL SPEED.</h2>
+      <p>A keyboard-first terminal command center. Find folders, open files and launch apps without leaving your terminal.</p>
+      <a class="install" href="#install">[ INSTALL QDEX ]</a>
+      <div class="terminal" id="install">
+        <div><span># Homebrew (recommended)</span></div>
+        <div>brew tap ard-tube/qdex &amp;&amp; brew install qdex</div>
+        <br>
+        <div><span># Or use the setup installer</span></div>
+        <div>curl -fsSL https://ard-tube.github.io/qdex/install.sh | sh</div>
+      </div>
+    </section>
+    <section class="grid" aria-label="Features">
+      <article><h3>01 // MOVE FAST</h3><p>Live fuzzy search, arrow-key navigation, and instant access to your folders.</p></article>
+      <article><h3>02 // LAUNCH ANYTHING</h3><p>Search your installed Mac apps and open them right from the command center.</p></article>
+      <article><h3>03 // STAY IN CONTROL</h3><p>Copy and move files with clear keyboard shortcuts and no accidental overwrites.</p></article>
+    </section>
+    <section class="profile">
+      <strong>MAKE IT YOURS</strong><br>
+      Qdex asks your name and preferred starting folder on first launch. For the
+      full-screen neon look, open Terminal → Settings → Profiles, choose the
+      built-in <strong>Pro</strong> profile, and click Default.
+    </section>
+    <footer>
+      <span>QDEX · MIT LICENSE · NO SUBSCRIPTION, NO TRACKING</span>
+      <span><a href="https://github.com/ard-tube/qdex">SOURCE</a> · <a href="https://github.com/ard-tube/qdex/issues">ISSUES</a></span>
+    </footer>
+  </main>
+</body>
+</html>
