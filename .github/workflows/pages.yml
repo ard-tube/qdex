@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "site/**"
+      - "install.sh"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -26,6 +27,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Include installer download
+        run: cp install.sh site/install.sh
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:

@@ -35,7 +35,8 @@ class Settings:
     start_directory: Path
 
 
-def load_settings(config_file: Path = CONFIG_FILE) -> Settings | None:
+def load_settings(config_file: Path | None = None) -> Settings | None:
+    config_file = config_file or CONFIG_FILE
     if not config_file.exists():
         return None
     try:
@@ -51,7 +52,8 @@ def load_settings(config_file: Path = CONFIG_FILE) -> Settings | None:
     return Settings(name.strip(), start_directory.resolve())
 
 
-def save_settings(settings: Settings, config_file: Path = CONFIG_FILE) -> None:
+def save_settings(settings: Settings, config_file: Path | None = None) -> None:
+    config_file = config_file or CONFIG_FILE
     config_file.parent.mkdir(parents=True, exist_ok=True)
     temporary = config_file.with_suffix(".tmp")
     temporary.write_text(
