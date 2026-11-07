@@ -10,4 +10,11 @@ while [ -L "$script_path" ]; do
     esac
 done
 script_dir=$(CDPATH= cd -P -- "$(dirname -- "$script_path")" && pwd)
-exec python3 "$script_dir/qdex.py" "$@"
+for python in python3 python3.13; do
+    if command -v "$python" >/dev/null 2>&1 &&
+       "$python" -c 'import sys; raise SystemExit(sys.version_info < (3, 10))'; then
+        exec "$python" "$script_dir/qdex.py" "$@"
+    fi
+done
+printf 'Qdex requires Python 3.10 or newer. Install it with Homebrew: brew install python@3.13\n' >&2
+exit 127

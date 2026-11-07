@@ -3,13 +3,31 @@ set -eu
 
 REPOSITORY="https://github.com/ard-tube/qdex"
 VERSION="v1.0.0"
-DEFAULT_INSTALL_DIR="$HOME/.local/share/qdex"
+DEFAULT_INSTALL_DIR="$HOME/Documents/Qdex"
 DEFAULT_BIN_DIR="$HOME/.local/bin"
 
 printf 'Qdex installer\n'
 printf 'Install Qdex files in [%s]: ' "$DEFAULT_INSTALL_DIR"
 IFS= read -r install_dir || install_dir=""
 install_dir=${install_dir:-$DEFAULT_INSTALL_DIR}
+
+python_ready=false
+for python in python3 python3.13; do
+    if command -v "$python" >/dev/null 2>&1 &&
+       "$python" -c 'import sys; raise SystemExit(sys.version_info < (3, 10))'; then
+        python_ready=true
+        break
+    fi
+done
+if [ "$python_ready" != true ]; then
+    if command -v brew >/dev/null 2>&1; then
+        printf 'Installing the free Python runtime from Homebrew...\n'
+        brew install python@3.13
+    else
+        printf 'Qdex requires Python 3.10 or newer. Install Homebrew and run: brew install python@3.13\n' >&2
+        exit 1
+    fi
+fi
 
 case "$install_dir" in
     "~") install_dir=$HOME ;;
@@ -22,7 +40,8 @@ case "$install_dir" in
 esac
 
 archive=$(mktemp "${TMPDIR:-/tmp}/qdex.XXXXXX")
-trap 'rm -f "$archive"' EXIT HUP INT TERM
+trap 'rm -f "$archive"' EXIT
+trap 'exit 1' HUP INT TERM
 url="$REPOSITORY/releases/download/$VERSION/qdex-$VERSION.tar.gz"
 printf 'Downloading Qdex %s...\n' "$VERSION"
 curl --fail --location --silent --show-error "$url" --output "$archive"
